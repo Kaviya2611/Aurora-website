@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Projection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .price-range {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .price-range label {
+            margin-right: 10px;
+        }
+        .price-range select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .recommendation {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .recommendation h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        .recommendation p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interior Design Cost Projection</h1>
+        <div class="price-range">
+            <label for="priceSelect">Select a Price Range:</label>
+            <select id="priceSelect" onchange="showRecommendations()">
+                <option value="">--Select--</option>
+                <option value="low">Under 2 lakh</option>
+                <option value="medium">2 lakh - 7 lakh</option>
+                <option value="high">7 lakh - 15 lakh</option>
+                <option value="premium">Above 15 lakh</option>
+            </select>
+        </div>
+        <div id="recommendations" class="recommendations">
+            <!-- Recommendations will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        function showRecommendations() {
+            const priceSelect = document.getElementById('priceSelect');
+            const recommendations = document.getElementById('recommendations');
+            const value = priceSelect.value;
+            recommendations.innerHTML = '';
+
+            let content = '';
+
+            if (value === 'low') {
+                content = `
+                    <div class="recommendation">
+                        <h2>Budget-Friendly Design</h2>
+                        <p>Opt for simple, minimalist designs with cost-effective materials. Great for smaller spaces or quick updates.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h2>Essential Upgrades</h2>
+                        <p>Focus on essential upgrades such as new paint and affordable furniture pieces to refresh the look.</p>
+                    </div>
+                `;
+            } else if (value === 'medium') {
+                content = `
+                    <div class="recommendation">
+                        <h2>Moderate Makeover</h2>
+                        <p>Enhance your space with quality furnishings and stylish accents. Consider custom shelving and updated lighting.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h2>Partial Renovation</h2>
+                        <p>Undertake a partial renovation with new flooring, improved fixtures, and elegant décor.</p>
+                    </div>
+                `;
+            } else if (value === 'high') {
+                content = `
+                    <div class="recommendation">
+                        <h2>Premium Design</h2>
+                        <p>Invest in high-end furnishings, designer pieces, and luxurious materials for a sophisticated look.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h2>Complete Overhaul</h2>
+                        <p>Full renovation including custom-built features, premium materials, and high-quality finishes.</p>
+                    </div>
+                `;
+            } else if (value === 'premium') {
+                content = `
+                    <div class="recommendation">
+                        <h2>Luxurious Experience</h2>
+                        <p>Experience top-tier design with bespoke furniture, high-end materials, and advanced home automation.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h2>Exclusive Design</h2>
+                        <p>Fully customized interiors with unique features and the finest craftsmanship.</p>
+                    </div>
+                `;
+            }
+
+            recommendations.innerHTML = content;
+        }
+    </script>
+</body>
+</html>
